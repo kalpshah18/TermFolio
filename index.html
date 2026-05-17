@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 /* ─── THEME VARIABLES ──────────────────────────────────────── */
@@ -843,10 +844,22 @@ function renderSkills() {
   return `<div class="section-header">Tech::Skills</div>${cats}`;
 }
 
+function getIcon(icon){
+  const icons = {
+    Linkedin: "fa-brands fa-linkedin",
+    Email: "fa-solid fa-at",
+    Github: "fa-brands fa-github",
+    Phone: "fa-solid fa-phone",
+    Codeforces: "fa-solid fa-code",
+    Location: "fa-solid fa-location-crosshairs"
+  };
+  return `<i class="${icons[icon] || 'fa-solid fa-bars'}"></i>`;
+}
+
 function renderContact() {
   const rows = DATA.contact.map(c => `
     <div class="contact-row">
-      <span class="contact-icon">${c.icon}</span>
+      <span class="contact-icon">${getIcon(c.icon)}</span>
       <span class="contact-label">${c.label}</span>
       <span class="contact-value">${c.href ? `<a href="${c.href}" target="_blank" rel="noopener">${c.value}</a>` : c.value}</span>
     </div>`).join('');
