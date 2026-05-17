@@ -387,7 +387,7 @@ main {
   align-items: start;
 }
 .about-avatar {
-  width: 110px; height: 110px;
+  width: 125px; height: 175px;
   border-radius: 8px;
   border: 2px solid var(--border2);
   background: var(--bg3);
@@ -773,7 +773,9 @@ function renderAbout() {
   return `
     <div class="section-header">Main::User_Profile</div>
     <div class="about-card">
-      <div class="about-avatar">◉</div>
+      <div class="about-avatar">
+        <img src="img/Kalp_Udaipur.jpeg" alt="Kalp Photo">
+      </div>
       <div>
         <div class="about-info-name">${d.name} <span class="status-badge">${d.status}</span></div>
         <div class="about-info-handle">${d.username} ~ ${d.role}</div>
@@ -1027,7 +1029,6 @@ async function init() {
   // Theme can apply immediately — doesn't need data
   const savedTheme = localStorage.getItem('term-theme');
   if (savedTheme) setTheme(savedTheme);
-  else setTheme('light');
 
   updateClock();
   setInterval(updateClock, 1000);
