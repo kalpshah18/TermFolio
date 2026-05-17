@@ -3,27 +3,27 @@
     {
       "label": "Languages",
       "icon": "⌨",
-      "skills": ["C", "C++", "Python", "Rust", "x86 Assembly", "JavaScript", "Bash"]
+      "skills": ["C", "C++", "Python", "SQL", "Assembly", "Verilog"]
     },
     {
       "label": "Systems & OS",
       "icon": "⚙",
-      "skills": ["Linux", "QEMU", "GDB", "Make", "Docker", "Git"]
+      "skills": ["Linux", "CMake", "Docker", "Git"]
     },
     {
-      "label": "ML / AI",
+      "label": "CV / ML / AI",
       "icon": "◈",
-      "skills": ["PyTorch", "NumPy", "Scikit-learn", "HuggingFace", "Weights & Biases"]
+      "skills": ["OpenCV", "PyTorch", "NumPy", "Scikit-learn", "Langchain", "Pandas", "Matplotlib"]
     },
     {
       "label": "Theory",
       "icon": "◎",
-      "skills": ["Compilers", "Operating Systems", "Data Structures", "Algorithms", "Computer Networks"]
+      "skills": ["Computer Architecture", "Data Structures", "Algorithms", "Machine Learning"]
     },
     {
       "label": "Web",
       "icon": "◻",
-      "skills": ["HTML/CSS", "JavaScript", "React", "Node.js", "REST APIs"]
+      "skills": ["HTML/CSS", "JavaScript", "React", "Node.js", "Next.js", "REST APIs"]
     }
   ]
 }

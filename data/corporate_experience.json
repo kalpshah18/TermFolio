@@ -1,0 +1,12 @@
+{
+  "experience": [
+    {
+      "role": "Software Development Intern",
+      "org": "AB6 Robotics",
+      "period": "May 2025 – Jul 2025",
+      "type": "Corporate",
+      "description": "Built a cross-platform desktop application in Python and Qt enabling real-time communication between robots and students across 15+ robotics challenges, deployed and actively used by 30+ students during a summer school",
+      "tags": ["Python", "Robotics", "App Development"]
+    }
+  ]
+}

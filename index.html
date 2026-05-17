@@ -734,26 +734,36 @@ main {
 <script>
 /* ── DATA – loaded from JSON files ───────────────────────────────── */
 let DATA = {};
-
+ 
 async function loadData() {
-  const files = ['about', 'experience', 'projects', 'skills', 'contact'];
-
-  const results = await Promise.all(
-    files.map(name =>
-      fetch(`data/${name}.json`)
-        .then(r => { if (!r.ok) throw new Error(`Failed to load ${name}.json`); return r.json(); })
-    )
-  );
-
-  // about.json is a flat object; the rest use a top-level key matching the filename
-  const [about, experience, projects, skills, contact] = results;
+  const fetch_json = name =>
+    fetch(`data/${name}.json`)
+      .then(r => { if (!r.ok) throw new Error(`Failed to load ${name}.json`); return r.json(); });
+ 
+  const [
+    about, projects, skills, contact,
+    corporate, positions, academic
+  ] = await Promise.all([
+    fetch_json('about'),
+    fetch_json('projects'),
+    fetch_json('skills'),
+    fetch_json('contact'),
+    fetch_json('corporate_experience'),
+    fetch_json('positions_of_responsibility'),
+    fetch_json('academic_experience'),
+  ]);
+ 
   DATA = {
-    about,                            // { name, username, bio, … }
-    experience: experience.experience,// unwrap array from { experience: […] }
-    projects:   projects.projects,    // unwrap array from { projects: […] }
-    skills:     skills.categories,   // unwrap array from { categories: […] }
-    contact:    contact.contact,      // unwrap array from { contact: […] }
-    cv_url: "https://your-cv-link.com/kalp-shah-cv.pdf"  // ← replace with your actual CV URL
+    about,
+    experience: {
+      academic:    academic.experience,    // array from academic_experience.json
+      corporate:   corporate.experience,   // array from corporate_experience.json
+      positions:   positions.experience,   // array from positions_of_responsibility.json
+    },
+    projects: projects.projects,
+    skills:   skills.categories,
+    contact:  contact.contact,
+    cv_url:   "https://your-cv-link.com/kalp-shah-cv.pdf"  // ← replace with your actual CV URL
   };
 }
 
@@ -779,7 +789,7 @@ function renderAbout() {
 }
 
 function renderExperience() {
-  const items = DATA.experience.map(e => `
+  const renderItems = items => items.map(e => `
     <div class="exp-item">
       <div class="exp-header">
         <div class="exp-role">${e.role}</div>
@@ -787,9 +797,23 @@ function renderExperience() {
       </div>
       <div class="exp-org">@ ${e.org}</div>
       <div class="exp-desc">${e.description}</div>
-      <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="tags">${e.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
     </div>`).join('');
-  return `<div class="section-header">Roles::Experience</div>${items}`;
+ 
+  const sections = [
+    { key: 'academic',   label: 'Academic' },
+    { key: 'corporate',  label: 'Corporate' },
+    { key: 'positions',  label: 'Positions of Responsibility' },
+  ];
+ 
+  const body = sections
+    .filter(s => DATA.experience[s.key]?.length)   // skip empty sections
+    .map(s => `
+      <div class="exp-subsection-label">${s.label}</div>
+      ${renderItems(DATA.experience[s.key])}
+    `).join('');
+ 
+  return `<div class="section-header">Roles::Experience</div>${body}`;
 }
 
 function renderProjects() {
@@ -945,7 +969,7 @@ function unknownCmd(cmd) {
 }
 
 function clearTerminal() {
-  document.getElementById('help-output').parentElement && (() => {})();
+  // document.getElementById('help-output').parentElement && (() => {})();
   document.getElementById('dynamic-output').innerHTML = '';
   document.getElementById('help-output').style.display = 'none';
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));

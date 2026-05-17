@@ -1,0 +1,36 @@
+{
+  "experience": [
+    {
+      "role": "Technical Coordinator",
+      "org": "IIT Gandhinagar – Technical Council",
+      "period": "May 2026 – Present",
+      "type": "Extracurricular",
+      "description": "Preparing Event Proposals and Managing Inventory and Resources",
+      "tags": ["Logistics", "Management"]
+    },
+    {
+      "role": "Outreach Coordinator",
+      "org": "IIT Gandhinagar - Technical Council",
+      "period": "May 2025 – Apr 2026",
+      "type": "Extracurricular",
+      "description": "Led Outreach Initiatives with other Colleges and Corporations. Reactivated Social Media Accounts on Instagram and Linkedin",
+      "tags": ["Social Media", "Corporate Communication", "Collaboration"]
+    },
+    {
+      "role": "Technical Team",
+      "org": "Entrepreneurship Initiative IITGn",
+      "period": "Dec 2024 – Apr 2025",
+      "type": "Extracurricular",
+      "description": "Worked on the EII Team Website (eii-iitgn.github.io)",
+      "tags": ["HTML/CSS", "Javascript"]
+    },
+    {
+      "role": "Sponsorship Executive",
+      "org": "Amalthea, Annual Technical Summit of IITGn",
+      "period": "Aug 2024 – Jan 2025",
+      "type": "Extracurricular",
+      "description": "Developed Sponsorship Proposals for collaboration with companies and getting funding. Conducted meetings and secured funding from major corporations.",
+      "tags": ["Fundraising", "Corporate Communication"]
+    }
+  ]
+}

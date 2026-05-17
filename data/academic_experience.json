@@ -1,0 +1,28 @@
+{
+  "experience": [
+    {
+      "role": "Summer Research Intern",
+      "org": "IIT Gandhinagar – MIR Lab",
+      "period": "May 2026 – Jul 2026",
+      "type": "Research",
+      "description": "Engineering a Low-cost CV Pipeline on NVIDIA Jetson Nano to estimate and monitor flood depth",
+      "tags": ["Computer Vision", "Deep Learning", "Signal Processing", "PyTorch"]
+    },
+    {
+      "role": "Researcher",
+      "org": "IIT Gandhinagar – CVIG Lab",
+      "period": "Jan 2026 – Apr 2026",
+      "type": "Research",
+      "description": "Developed a Classical CV Pipeline for Identifying Locations on Mars that are suitable for landing a rover",
+      "tags": ["Computer Vision", "Signal Processing", "OpenCV"]
+    },
+    {
+      "role": "ADH Mentor",
+      "org": "IIT Gandhinagar",
+      "period": "Oct 2025 – Dec 2025",
+      "type": "Academic",
+      "description": "Mentor for ES115 (Design, Innovation and Prototyping) for 50+ Students",
+      "tags": ["Design", "Teaching"]
+    }
+  ]
+}
