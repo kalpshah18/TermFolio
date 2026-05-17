@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "name": "CPU Ray Tracing Engine in C++",
+      "description": "A physics based ray tracing engine in C++ to simulate photorealistic rendered scenes",
+      "tech": ["C++"],
+      "repo": "https://github.com/kalpshah18/Ray-Tracer-CPP",
+      "status": "active"
+    },
+    {
+      "name": "Landing Location Identification for Mars Rover using Classical Computer Vision",
+      "description": "Developed a computer vision pipeline to identify safe landing zones on Mars under computational constraints. Now used as a foundational algorithm at ISRO.",
+      "tech": ["Python", "OpenCV"],
+      "repo": "https://github.com/kalpshah18/MarsSurfaceLandingDetectiong",
+      "status": "completed"
+    },
+    {
+      "name": "Real-time Carbon Credits Market Analysis using Agentic AI",
+      "description": "Engineered a full-stack platform using Next.js and WebSocket APIs to surface real-time carbon credit pricing, trends, and AI-generated investment signals to end users. Built at Inter-IIT Tech Meet 14.0 as Team 58",
+      "tech": ["Python", "SQL", "Langchain", "PostgreSQL", "Kafka", "Debezium", "RAG"],
+      "repo": "https://github.com/kalpshah18/InterIITTech_",
+      "status": "completed"
+    },
+    {
+      "name": "TermFolio",
+      "description": "This very website. A terminal-inspired developer portfolio with macOS-style UI, theme switching, and command-based navigation.",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "repo": "https://github.com/kalpshah18/termfolio",
+      "status": "completed"
+    }
+  ]
+}

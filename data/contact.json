@@ -1,0 +1,10 @@
+{
+  "contact": [
+    { "label": "Academic Email", "value": "kalp.shah@iitgn.ac.in", "href": "mailto:kalp.shah@iitgn.ac.in", "icon": "✉" },
+    { "label": "Personal Email", "value": "kalpshah1808@gmail.com", "href": "mailto:kalpshah1808@gmail.com", "icon": "✉" },
+    { "label": "GitHub", "value": "github.com/kalpshah18", "href": "https://github.com/kalpshah18", "icon": "◈" },
+    { "label": "LinkedIn", "value": "linkedin.com/in/kalpshah18", "href": "https://linkedin.com/in/kalpshah18", "icon": "◉" },
+    { "label": "Location", "value": "Gandhinagar, Gujarat, India", "href": null, "icon": "◎" },
+    { "label": "Phone", "value": "+91 6355258281", "href": null, "icon": "◎" }
+  ]
+}

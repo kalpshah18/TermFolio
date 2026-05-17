@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>kalp@iitgn ~ portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─── THEME VARIABLES ──────────────────────────────────────── */
+:root, [data-theme="neon"] {
+  --bg:           #0a0e0a;
+  --bg2:          #0f140f;
+  --bg3:          #141a14;
+  --border:       #1e2e1e;
+  --border2:      #2a3e2a;
+  --text:         #c8e6c8;
+  --text-dim:     #6a8f6a;
+  --text-muted:   #3a5a3a;
+  --accent:       #39ff14;
+  --accent2:      #00ff88;
+  --accent3:      #7fff00;
+  --prompt:       #39ff14;
+  --header-bg:    rgba(10, 14, 10, 0.92);
+  --terminal-bg:  #0c120c;
+  --terminal-top: #111811;
+  --dot-red:      #ff5f57;
+  --dot-yellow:   #febc2e;
+  --dot-green:    #28c840;
+  --scrollbar:    #1e2e1e;
+  --scrollbar-thumb: #2a4a2a;
+  --glow:         0 0 20px rgba(57,255,20,0.15);
+  --glow-strong:  0 0 40px rgba(57,255,20,0.25);
+  --tag-bg:       rgba(57,255,20,0.08);
+  --tag-border:   rgba(57,255,20,0.25);
+  --selection:    rgba(57,255,20,0.2);
+}
+
+[data-theme="dark"] {
+  --bg:           #0d0d0d;
+  --bg2:          #111111;
+  --bg3:          #161616;
+  --border:       #222222;
+  --border2:      #2e2e2e;
+  --text:         #e8e8e8;
+  --text-dim:     #888888;
+  --text-muted:   #444444;
+  --accent:       #ffffff;
+  --accent2:      #cccccc;
+  --accent3:      #aaaaaa;
+  --prompt:       #ffffff;
+  --header-bg:    rgba(13,13,13,0.92);
+  --terminal-bg:  #0a0a0a;
+  --terminal-top: #141414;
+  --dot-red:      #ff5f57;
+  --dot-yellow:   #febc2e;
+  --dot-green:    #28c840;
+  --scrollbar:    #1a1a1a;
+  --scrollbar-thumb: #333333;
+  --glow:         0 0 20px rgba(255,255,255,0.05);
+  --glow-strong:  0 0 40px rgba(255,255,255,0.1);
+  --tag-bg:       rgba(255,255,255,0.06);
+  --tag-border:   rgba(255,255,255,0.18);
+  --selection:    rgba(255,255,255,0.15);
+}
+
+[data-theme="light"] {
+  --bg:           #f0f0f0;
+  --bg2:          #e8e8e8;
+  --bg3:          #dcdcdc;
+  --border:       #cccccc;
+  --border2:      #b8b8b8;
+  --text:         #1a1a1a;
+  --text-dim:     #555555;
+  --text-muted:   #999999;
+  --accent:       #000000;
+  --accent2:      #222222;
+  --accent3:      #444444;
+  --prompt:       #000000;
+  --header-bg:    rgba(240,240,240,0.92);
+  --terminal-bg:  #e8e8e8;
+  --terminal-top: #d8d8d8;
+  --dot-red:      #ff5f57;
+  --dot-yellow:   #febc2e;
+  --dot-green:    #28c840;
+  --scrollbar:    #d0d0d0;
+  --scrollbar-thumb: #aaaaaa;
+  --glow:         0 0 20px rgba(0,0,0,0.06);
+  --glow-strong:  0 0 40px rgba(0,0,0,0.12);
+  --tag-bg:       rgba(0,0,0,0.06);
+  --tag-border:   rgba(0,0,0,0.18);
+  --selection:    rgba(0,0,0,0.12);
+}
+
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+::selection { background: var(--selection); }
+
+html { height: 100%; }
+
+body {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: var(--bg);
+  color: var(--text);
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Scanline overlay for neon theme */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+[data-theme="neon"] body::before { opacity: 1; }
+
+/* ─── SCROLLBAR ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+/* ─── HEADER ───────────────────────────────────────────────── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.header-left {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+[data-theme="neon"] .header-left {
+  text-shadow: 0 0 12px var(--accent);
+}
+.header-left::before {
+  content: '>_';
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-dim);
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  transition: color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+.nav-btn::before {
+  content: attr(data-icon);
+  font-size: 11px;
+  opacity: 0.7;
+}
+.nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.nav-btn:hover, .nav-btn.active {
+  color: var(--accent);
+  background: var(--tag-bg);
+}
+[data-theme="neon"] .nav-btn:hover,
+[data-theme="neon"] .nav-btn.active {
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#clock {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  min-width: 50px;
+  text-align: right;
+}
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+.theme-btn.active {
+  background: var(--border2);
+  color: var(--accent);
+}
+
+/* ─── MAIN LAYOUT ──────────────────────────────────────────── */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 68px 24px 24px;
+  height: 100vh;
+}
+
+/* ─── TERMINAL WINDOW ──────────────────────────────────────── */
+.terminal-window {
+  width: 100%;
+  max-width: 900px;
+  height: calc(100vh - 92px);
+  max-height: 720px;
+  display: flex;
+  flex-direction: column;
+  background: var(--terminal-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--glow-strong), 0 32px 80px rgba(0,0,0,0.6);
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Terminal title bar */
+.terminal-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 40px;
+  background: var(--terminal-top);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.traffic-lights {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.tl {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  cursor: default;
+}
+.tl-red    { background: var(--dot-red); }
+.tl-yellow { background: var(--dot-yellow); }
+.tl-green  { background: var(--dot-green); }
+
+.terminal-title {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Terminal body */
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  line-height: 1.6;
+  font-size: 13.5px;
+}
+
+/* Welcome message */
+.welcome-msg {
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+.welcome-msg .highlight {
+  color: var(--accent);
+  font-weight: 500;
+}
+[data-theme="neon"] .welcome-msg .highlight {
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* Command line */
+.cmd-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.prompt-label {
+  color: var(--prompt);
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+[data-theme="neon"] .prompt-label {
+  text-shadow: 0 0 8px var(--prompt);
+}
+.prompt-cmd {
+  color: var(--text);
+}
+.prompt-cursor {
+  display: inline-block;
+  width: 8px; height: 14px;
+  background: var(--accent);
+  animation: blink 1.1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+  flex-shrink: 0;
+}
+[data-theme="neon"] .prompt-cursor {
+  box-shadow: 0 0 6px var(--accent);
+}
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+/* Output blocks */
+.output-block {
+  margin: 12px 0 20px 0;
+  border-left: 2px solid var(--border2);
+  padding-left: 16px;
+  animation: fadeSlide 0.3s ease;
+}
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION: ABOUT ───────────────────────────────────────── */
+.about-card {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.about-avatar {
+  width: 110px; height: 110px;
+  border-radius: 8px;
+  border: 2px solid var(--border2);
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: var(--accent);
+  overflow: hidden;
+}
+[data-theme="neon"] .about-avatar {
+  box-shadow: 0 0 20px rgba(57,255,20,0.15);
+}
+.about-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.about-info-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+[data-theme="neon"] .about-info-name { text-shadow: 0 0 12px var(--accent); }
+.about-info-handle {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+.status-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+  margin-left: 8px;
+}
+.about-bio {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.about-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+}
+.meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+}
+.meta-label { color: var(--text-muted); flex-shrink: 0; }
+.meta-value { color: var(--text); font-weight: 500; }
+.meta-value.highlight { color: var(--accent); }
+[data-theme="neon"] .meta-value.highlight { text-shadow: 0 0 8px var(--accent); }
+
+/* ─── SECTION: EXPERIENCE ──────────────────────────────────── */
+.exp-item {
+  margin-bottom: 18px;
+  padding: 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+.exp-item:hover { border-color: var(--border2); }
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.exp-role { font-size: 13px; font-weight: 600; color: var(--accent); }
+[data-theme="neon"] .exp-role { text-shadow: 0 0 6px var(--accent); }
+.exp-period { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.exp-org { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
+.exp-desc { font-size: 12px; color: var(--text-dim); line-height: 1.65; margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 10.5px;
+  padding: 2px 8px;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 3px;
+  color: var(--accent2);
+  letter-spacing: 0.04em;
+}
+
+/* ─── SECTION: PROJECTS ────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.project-card {
+  padding: 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.project-card:hover {
+  border-color: var(--accent3);
+}
+[data-theme="neon"] .project-card:hover {
+  box-shadow: 0 0 16px rgba(57,255,20,0.1);
+}
+.project-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.project-name { font-size: 13px; font-weight: 600; color: var(--accent); }
+[data-theme="neon"] .project-name { text-shadow: 0 0 6px var(--accent); }
+.project-status {
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project-status.active {
+  background: rgba(57,255,20,0.12);
+  color: var(--dot-green);
+  border: 1px solid rgba(40,200,64,0.3);
+}
+.project-status.completed {
+  background: rgba(254,188,46,0.1);
+  color: var(--dot-yellow);
+  border: 1px solid rgba(254,188,46,0.3);
+}
+.project-desc { font-size: 11.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 10px; }
+.project-footer { display: flex; justify-content: space-between; align-items: center; }
+.project-link {
+  font-size: 11px;
+  color: var(--accent2);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.project-link:hover { opacity: 1; }
+
+/* ─── SECTION: SKILLS ──────────────────────────────────────── */
+.skills-section { margin-bottom: 14px; }
+.skill-category-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.skill-category-label::before { content: attr(data-icon); }
+.skill-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.skill-pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 4px;
+  color: var(--text);
+  transition: border-color 0.2s, color 0.2s;
+}
+.skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+[data-theme="neon"] .skill-pill:hover { text-shadow: 0 0 6px var(--accent); }
+
+/* ─── SECTION: CONTACT ─────────────────────────────────────── */
+.contact-list { display: flex; flex-direction: column; gap: 10px; }
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+.contact-row:hover { border-color: var(--border2); }
+.contact-icon { color: var(--accent); font-size: 14px; flex-shrink: 0; width: 16px; }
+.contact-label { color: var(--text-muted); font-size: 11px; width: 90px; flex-shrink: 0; }
+.contact-value { color: var(--text-dim); }
+.contact-value a { color: var(--accent2); text-decoration: none; transition: color 0.2s; }
+.contact-value a:hover { color: var(--accent); }
+
+/* ─── INPUT LINE ───────────────────────────────────────────── */
+.input-area {
+  border-top: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--terminal-top);
+  flex-shrink: 0;
+}
+.input-prompt { color: var(--prompt); font-size: 13px; font-weight: 600; white-space: nowrap; }
+[data-theme="neon"] .input-prompt { text-shadow: 0 0 8px var(--prompt); }
+.terminal-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  caret-color: var(--accent);
+}
+.input-hint { font-size: 11px; color: var(--text-muted); }
+
+/* ─── SECTION HEADER ───────────────────────────────────────── */
+.section-header {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-header::before { content: '[ '; color: var(--accent); }
+.section-header::after  { content: ' ]'; color: var(--accent); }
+
+/* ─── MISC ─────────────────────────────────────────────────── */
+.text-accent { color: var(--accent); }
+.text-dim    { color: var(--text-dim); }
+
+/* Typing animation for cmd text */
+.typing-text { overflow: hidden; white-space: nowrap; }
+
+/* Background grid effect for neon theme */
+[data-theme="neon"] body {
+  background-image:
+    linear-gradient(rgba(57,255,20,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,255,20,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-left">kalp@iitgn</div>
+
+  <nav class="header-nav">
+    <button class="nav-btn" data-icon="◉" data-cmd="about"      onclick="runCmd('about')">About</button>
+    <button class="nav-btn" data-icon="◈" data-cmd="experience" onclick="runCmd('experience')">Experience</button>
+    <button class="nav-btn" data-icon="◻" data-cmd="projects"   onclick="runCmd('projects')">Projects</button>
+    <button class="nav-btn" data-icon="⌨" data-cmd="skills"     onclick="runCmd('skills')">Skills</button>
+    <button class="nav-btn" data-icon="✉" data-cmd="contact"    onclick="runCmd('contact')">Contact</button>
+    <button class="nav-btn" data-icon="↗" data-cmd="cv"         onclick="runCmd('cv')">CV</button>
+  </nav>
+
+  <div class="header-right">
+    <span id="clock"></span>
+    <div class="theme-switcher">
+      <button class="theme-btn active" id="btn-neon"  onclick="setTheme('neon')">neon</button>
+      <button class="theme-btn"        id="btn-dark"  onclick="setTheme('dark')">dark</button>
+      <button class="theme-btn"        id="btn-light" onclick="setTheme('light')">light</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN TERMINAL
+════════════════════════════════════════════════════════════ -->
+<main>
+  <div class="terminal-window">
+
+    <!-- Title bar -->
+    <div class="terminal-titlebar">
+      <div class="traffic-lights">
+        <div class="tl tl-red"></div>
+        <div class="tl tl-yellow"></div>
+        <div class="tl tl-green"></div>
+      </div>
+      <span class="terminal-title">kalp@iitgn: ~</span>
+    </div>
+
+    <!-- Terminal output -->
+    <div class="terminal-body" id="terminal-body">
+      <!-- Welcome text -->
+      <div class="welcome-msg">
+        Welcome to <span class="highlight">Terminal v2.0.0</span><br/>
+        Type <span class="highlight">help</span> for available commands or click a nav item above.
+      </div>
+
+      <!-- Help command shown by default
+      <div class="cmd-line">
+        <span class="prompt-label">kalp@iitgn:~$</span>
+        <span class="prompt-cmd text-accent">help</span>
+      </div>
+      <div class="output-block" id="help-output">
+        <span class="text-accent">about</span>      — Learn about my background<br/>
+        <span class="text-accent">experience</span> — View my formal roles and research<br/>
+        <span class="text-accent">projects</span>   — View my recent work<br/>
+        <span class="text-accent">skills</span>     — Browse my technical skills<br/>
+        <span class="text-accent">contact</span>    — Get my contact info and socials<br/>
+        <span class="text-accent">cv</span>         — Open my CV in a new tab<br/>
+        <span class="text-accent">clear</span>      — Clear the terminal screen
+      </div> -->
+
+      <!-- Dynamic output area -->
+      <div id="dynamic-output"></div>
+
+      <!-- Active prompt -->
+      <div class="cmd-line" id="active-prompt">
+        <span class="prompt-label">kalp@iitgn:~$</span>
+        <span id="typing-cmd" class="prompt-cmd"></span>
+        <span class="prompt-cursor" id="cursor"></span>
+      </div>
+    </div>
+
+    <!-- Input area -->
+    <div class="input-area">
+      <span class="input-prompt">kalp@iitgn:~$</span>
+      <input
+        class="terminal-input"
+        id="terminal-input"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="type a command..."
+        onkeydown="handleInput(event)"
+      />
+      <span class="input-hint">↵ enter</span>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════ -->
+<script>
+/* ── DATA – loaded from JSON files ───────────────────────────────── */
+let DATA = {};
+
+async function loadData() {
+  const files = ['about', 'experience', 'projects', 'skills', 'contact'];
+
+  const results = await Promise.all(
+    files.map(name =>
+      fetch(`data/${name}.json`)
+        .then(r => { if (!r.ok) throw new Error(`Failed to load ${name}.json`); return r.json(); })
+    )
+  );
+
+  // about.json is a flat object; the rest use a top-level key matching the filename
+  const [about, experience, projects, skills, contact] = results;
+  DATA = {
+    about,                            // { name, username, bio, … }
+    experience: experience.experience,// unwrap array from { experience: […] }
+    projects:   projects.projects,    // unwrap array from { projects: […] }
+    skills:     skills.categories,   // unwrap array from { categories: […] }
+    contact:    contact.contact,      // unwrap array from { contact: […] }
+    cv_url: "https://your-cv-link.com/kalp-shah-cv.pdf"  // ← replace with your actual CV URL
+  };
+}
+
+/* ── RENDERERS ──────────────────────────────────────────────────── */
+function renderAbout() {
+  const d = DATA.about;
+  return `
+    <div class="section-header">Main::User_Profile</div>
+    <div class="about-card">
+      <div class="about-avatar">◉</div>
+      <div>
+        <div class="about-info-name">${d.name} <span class="status-badge">${d.status}</span></div>
+        <div class="about-info-handle">${d.username} ~ ${d.role}</div>
+        <div class="about-bio">${d.bio}</div>
+        <div class="about-meta">
+          <div class="meta-row"><span class="meta-label">Degree:</span><span class="meta-value">${d.degree}</span></div>
+          <div class="meta-row"><span class="meta-label">Institute:</span><span class="meta-value">${d.institute}</span></div>
+          <div class="meta-row"><span class="meta-label">CGPA:</span><span class="meta-value highlight">${d.cgpa}</span></div>
+          <div class="meta-row"><span class="meta-label">Achievements:</span><span class="meta-value">${d.achievements}</span></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderExperience() {
+  const items = DATA.experience.map(e => `
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">${e.role}</div>
+        <div class="exp-period">${e.period}</div>
+      </div>
+      <div class="exp-org">@ ${e.org}</div>
+      <div class="exp-desc">${e.description}</div>
+      <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+  return `<div class="section-header">Roles::Experience</div>${items}`;
+}
+
+function renderProjects() {
+  const cards = DATA.projects.map(p => `
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-name">${p.name}</span>
+        <span class="project-status ${p.status}">${p.status}</span>
+      </div>
+      <div class="project-desc">${p.description}</div>
+      <div class="project-footer">
+        <div class="tags">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <a class="project-link" href="${p.repo}" target="_blank" rel="noopener">↗ repo</a>
+      </div>
+    </div>`).join('');
+  return `<div class="section-header">Code::Projects</div><div class="projects-grid">${cards}</div>`;
+}
+
+function renderSkills() {
+  const cats = DATA.skills.map(c => `
+    <div class="skills-section">
+      <div class="skill-category-label" data-icon="${c.icon}">${c.label}</div>
+      <div class="skill-pills">${c.skills.map(s=>`<span class="skill-pill">${s}</span>`).join('')}</div>
+    </div>`).join('');
+  return `<div class="section-header">Tech::Skills</div>${cats}`;
+}
+
+function renderContact() {
+  const rows = DATA.contact.map(c => `
+    <div class="contact-row">
+      <span class="contact-icon">${c.icon}</span>
+      <span class="contact-label">${c.label}</span>
+      <span class="contact-value">${c.href ? `<a href="${c.href}" target="_blank" rel="noopener">${c.value}</a>` : c.value}</span>
+    </div>`).join('');
+  return `<div class="section-header">Links::Contact</div><div class="contact-list">${rows}</div>`;
+}
+
+const COMMANDS = {
+  about:      renderAbout,
+  experience: renderExperience,
+  projects:   renderProjects,
+  skills:     renderSkills,
+  contact:    renderContact,
+  help: () => `
+    <span class="text-accent">about</span>      — Learn about my background<br/>
+    <span class="text-accent">experience</span> — View my formal roles and research<br/>
+    <span class="text-accent">projects</span>   — View my recent work<br/>
+    <span class="text-accent">skills</span>     — Browse my technical skills<br/>
+    <span class="text-accent">contact</span>    — Get my contact info and socials<br/>
+    <span class="text-accent">cv</span>         — Open my CV in a new tab<br/>
+    <span class="text-accent">clear</span>      — Clear the terminal screen`,
+  cv: () => {
+    window.open(DATA.cv_url, '_blank');
+    return `<span class="text-dim">Opening CV in a new tab...</span> <span class="text-accent">✓</span>`;
+  },
+  clear: () => null
+};
+
+/* ── TERMINAL LOGIC ─────────────────────────────────────────────── */
+let isTyping = false;
+let dataReady = false;
+let historyIndex = -1;
+const cmdHistory = [];
+
+function runCmd(cmd) {
+  if (isTyping || !dataReady) return;
+  cmd = cmd.trim().toLowerCase();
+
+  // Highlight active nav button
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cmd === cmd);
+  });
+
+  if (cmd === 'clear') { clearTerminal(); return; }
+  if (!COMMANDS[cmd]) { unknownCmd(cmd); return; }
+
+  // Push to history
+  if (cmd && cmdHistory[cmdHistory.length - 1] !== cmd) cmdHistory.push(cmd);
+  historyIndex = cmdHistory.length;
+
+  typeCommand(cmd);
+}
+
+function typeCommand(cmd) {
+  isTyping = true;
+  const typingEl = document.getElementById('typing-cmd');
+  const cursorEl = document.getElementById('cursor');
+  const activePrompt = document.getElementById('active-prompt');
+
+  typingEl.textContent = '';
+  cursorEl.style.display = 'inline-block';
+  activePrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  let i = 0;
+  const chars = cmd.split('');
+  const speed = Math.max(30, 80 - chars.length * 5);
+
+  function type() {
+    if (i < chars.length) {
+      typingEl.textContent += chars[i++];
+      setTimeout(type, speed);
+    } else {
+      // Done typing – pause, then render output
+      setTimeout(() => {
+        cursorEl.style.display = 'none';
+        appendOutput(cmd, typingEl.textContent);
+        typingEl.textContent = '';
+        cursorEl.style.display = 'inline-block';
+        isTyping = false;
+      }, 250);
+    }
+  }
+  type();
+}
+
+function appendOutput(cmd, displayCmd) {
+  const body = document.getElementById('dynamic-output');
+  const activePrompt = document.getElementById('active-prompt');
+
+  // Create echoed command line
+  const echoLine = document.createElement('div');
+  echoLine.className = 'cmd-line';
+  echoLine.innerHTML = `<span class="prompt-label">kalp@iitgn:~$</span><span class="prompt-cmd text-accent">${displayCmd}</span>`;
+
+  // Create output block
+  const outputDiv = document.createElement('div');
+  outputDiv.className = 'output-block';
+
+  const result = COMMANDS[cmd]();
+  if (result === null) return; // clear
+  outputDiv.innerHTML = result;
+
+  body.appendChild(echoLine);
+  body.appendChild(outputDiv);
+
+  // Scroll to newly added content
+  setTimeout(() => {
+    outputDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 100);
+}
+
+function unknownCmd(cmd) {
+  const body = document.getElementById('dynamic-output');
+  const echo = document.createElement('div');
+  echo.className = 'cmd-line';
+  echo.innerHTML = `<span class="prompt-label">kalp@iitgn:~$</span><span class="prompt-cmd text-accent">${cmd}</span>`;
+  const out = document.createElement('div');
+  out.className = 'output-block';
+  out.innerHTML = `<span style="color:var(--dot-red)">command not found:</span> ${cmd}. Type <span class="text-accent">help</span> for available commands.`;
+  body.appendChild(echo);
+  body.appendChild(out);
+  out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function clearTerminal() {
+  document.getElementById('help-output').parentElement && (() => {})();
+  document.getElementById('dynamic-output').innerHTML = '';
+  document.getElementById('help-output').style.display = 'none';
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('typing-cmd').textContent = '';
+}
+
+/* ── INPUT HANDLING ─────────────────────────────────────────────── */
+function handleInput(e) {
+  const input = e.target;
+  if (e.key === 'Enter') {
+    const val = input.value.trim();
+    input.value = '';
+    if (val) runCmd(val);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (historyIndex > 0) input.value = cmdHistory[--historyIndex];
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (historyIndex < cmdHistory.length - 1) {
+      input.value = cmdHistory[++historyIndex];
+    } else {
+      historyIndex = cmdHistory.length;
+      input.value = '';
+    }
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    const val = input.value.toLowerCase();
+    const match = Object.keys(COMMANDS).find(c => c.startsWith(val) && c !== val);
+    if (match) input.value = match;
+  }
+}
+
+/* ── CLOCK ──────────────────────────────────────────────────────── */
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent =
+    now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+}
+
+/* ── THEME ──────────────────────────────────────────────────────── */
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  ['neon','dark','light'].forEach(t => {
+    document.getElementById('btn-'+t).classList.toggle('active', t === theme);
+  });
+  localStorage.setItem('term-theme', theme);
+}
+
+/* ── INIT ───────────────────────────────────────────────────────── */
+async function init() {
+  // Disable nav + input until JSON data is fetched
+  document.querySelectorAll('.nav-btn').forEach(b => b.setAttribute('disabled', ''));
+  document.getElementById('terminal-input').disabled = true;
+
+  // Theme can apply immediately — doesn't need data
+  const savedTheme = localStorage.getItem('term-theme');
+  if (savedTheme) setTheme(savedTheme);
+  else setTheme('light');
+
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Keep input focused
+  document.addEventListener('click', () => {
+    document.getElementById('terminal-input').focus();
+  });
+
+  try {
+    await loadData();
+    dataReady = true;
+    // Re-enable nav buttons and input now that data is ready
+    document.querySelectorAll('.nav-btn').forEach(b => b.removeAttribute('disabled'));
+    document.getElementById('terminal-input').disabled = false;
+  } catch (err) {
+    // Show a friendly error inside the terminal if JSON files can't be fetched
+    const out = document.getElementById('dynamic-output');
+    const errDiv = document.createElement('div');
+    errDiv.className = 'output-block';
+    errDiv.innerHTML = `<span style="color:var(--dot-red)">error:</span> Could not load data files. `
+      + `Make sure the <span class="text-accent">data/</span> folder is served alongside <span class="text-accent">index.html</span>.<br/>`
+      + `<span class="text-dim">${err.message}</span>`;
+    out.appendChild(errDiv);
+    return; // leave input disabled-ish — commands would render empty
+  }
+
+  document.getElementById('terminal-input').focus();
+  
+  // Run about command
+  runCmd("about");
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "categories": [
+    {
+      "label": "Languages",
+      "icon": "⌨",
+      "skills": ["C", "C++", "Python", "Rust", "x86 Assembly", "JavaScript", "Bash"]
+    },
+    {
+      "label": "Systems & OS",
+      "icon": "⚙",
+      "skills": ["Linux", "QEMU", "GDB", "Make", "Docker", "Git"]
+    },
+    {
+      "label": "ML / AI",
+      "icon": "◈",
+      "skills": ["PyTorch", "NumPy", "Scikit-learn", "HuggingFace", "Weights & Biases"]
+    },
+    {
+      "label": "Theory",
+      "icon": "◎",
+      "skills": ["Compilers", "Operating Systems", "Data Structures", "Algorithms", "Computer Networks"]
+    },
+    {
+      "label": "Web",
+      "icon": "◻",
+      "skills": ["HTML/CSS", "JavaScript", "React", "Node.js", "REST APIs"]
+    }
+  ]
+}
