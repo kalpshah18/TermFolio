@@ -733,6 +733,25 @@ main {
      JAVASCRIPT
 ════════════════════════════════════════════════════════════ -->
 <script>
+/* ── ICON Map ───────────────────────────────── */
+function getIcon(icon){
+  const icons = {
+    Linkedin: "fa-brands fa-linkedin",
+    Email: "fa-solid fa-at",
+    Github: "fa-brands fa-github",
+    Phone: "fa-solid fa-phone",
+    Codeforces: "fa-solid fa-code",
+    Location: "fa-solid fa-location-crosshairs",
+    Keyboard: "fa-regular fa-keyboard",
+    Gear: "fa-solid fa-gear",
+    AI: "fa-solid fa-robot",
+    Book: "fa-solid fa-book",
+    Web: "fa-solid fa-globe"
+  };
+  return `<i class="${icons[icon] || 'fa-solid fa-bars'}"></i>`;
+}
+
+
 /* ── DATA – loaded from JSON files ───────────────────────────────── */
 let DATA = {};
  
@@ -838,22 +857,10 @@ function renderProjects() {
 function renderSkills() {
   const cats = DATA.skills.map(c => `
     <div class="skills-section">
-      <div class="skill-category-label" data-icon="${c.icon}">${c.label}</div>
+      <div class="skill-category-label"> ${getIcon(c.icon)} ${c.label}</div>
       <div class="skill-pills">${c.skills.map(s=>`<span class="skill-pill">${s}</span>`).join('')}</div>
     </div>`).join('');
   return `<div class="section-header">Tech::Skills</div>${cats}`;
-}
-
-function getIcon(icon){
-  const icons = {
-    Linkedin: "fa-brands fa-linkedin",
-    Email: "fa-solid fa-at",
-    Github: "fa-brands fa-github",
-    Phone: "fa-solid fa-phone",
-    Codeforces: "fa-solid fa-code",
-    Location: "fa-solid fa-location-crosshairs"
-  };
-  return `<i class="${icons[icon] || 'fa-solid fa-bars'}"></i>`;
 }
 
 function renderContact() {

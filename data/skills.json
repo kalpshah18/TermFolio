@@ -2,27 +2,27 @@
   "categories": [
     {
       "label": "Languages",
-      "icon": "⌨",
+      "icon": "Keyboard",
       "skills": ["C", "C++", "Python", "SQL", "Assembly", "Verilog"]
     },
     {
       "label": "Systems & OS",
-      "icon": "⚙",
+      "icon": "Gear",
       "skills": ["Linux", "CMake", "Docker", "Git"]
     },
     {
       "label": "CV / ML / AI",
-      "icon": "◈",
+      "icon": "AI",
       "skills": ["OpenCV", "PyTorch", "NumPy", "Scikit-learn", "Langchain", "Pandas", "Matplotlib"]
     },
     {
       "label": "Theory",
-      "icon": "◎",
+      "icon": "Book",
       "skills": ["Computer Architecture", "Data Structures", "Algorithms", "Machine Learning"]
     },
     {
       "label": "Web",
-      "icon": "◻",
+      "icon": "Web",
       "skills": ["HTML/CSS", "JavaScript", "React", "Node.js", "Next.js", "REST APIs"]
     }
   ]
