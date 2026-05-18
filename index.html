@@ -1049,6 +1049,7 @@ async function init() {
   // Theme can apply immediately — doesn't need data
   const savedTheme = localStorage.getItem('term-theme');
   if (savedTheme) setTheme(savedTheme);
+  else setTheme('light');
 
   updateClock();
   setInterval(updateClock, 1000);
