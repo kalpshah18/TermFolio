@@ -1,0 +1,14 @@
+{
+  "achievements": [
+    {
+      "name": "Integral Cup 2026",
+      "description": "An Integration Competition amongst IITs, IISc Bangalore and BITS. Ranked 47th amongst 2500+ Participants",
+      "icon": "Integration"
+    },
+    {
+      "name": "Codeforces",
+      "description": "Reached Expert on Codeforces (Handle: kalpshah1808) - Max Rating 1681 - Top ~850 out of 98000 in India",
+      "icon": "Codeforces"
+    }
+  ]
+}

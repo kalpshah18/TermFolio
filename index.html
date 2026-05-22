@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>kalp@iitgn ~ portfolio</title>
+<link rel="icon" type="image/x-icon" href="./img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -762,7 +763,7 @@ async function loadData() {
  
   const [
     about, projects, skills, contact,
-    corporate, positions, academic
+    corporate, positions, academic, achievements
   ] = await Promise.all([
     fetch_json('about'),
     fetch_json('projects'),
@@ -771,6 +772,7 @@ async function loadData() {
     fetch_json('corporate_experience'),
     fetch_json('positions_of_responsibility'),
     fetch_json('academic_experience'),
+    fetch_json('achievements')
   ]);
  
   DATA = {
@@ -783,7 +785,8 @@ async function loadData() {
     projects: projects.projects,
     skills:   skills.categories,
     contact:  contact.contact,
-    cv_url:   "https://your-cv-link.com/kalp-shah-cv.pdf"  // ← replace with your actual CV URL
+    cv_url:   "https://your-cv-link.com/kalp-shah-cv.pdf",  // ← replace with your actual CV URL
+    achievements: achievements.achievements
   };
 }
 
