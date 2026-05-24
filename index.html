@@ -648,9 +648,10 @@ main {
     <button class="nav-btn" data-icon="◉" data-cmd="about"      onclick="runCmd('about')">About</button>
     <button class="nav-btn" data-icon="◈" data-cmd="experience" onclick="runCmd('experience')">Experience</button>
     <button class="nav-btn" data-icon="◻" data-cmd="projects"   onclick="runCmd('projects')">Projects</button>
-    <button class="nav-btn" data-icon="⌨" data-cmd="skills"     onclick="runCmd('skills')">Skills</button>
-    <button class="nav-btn" data-icon="✉" data-cmd="contact"    onclick="runCmd('contact')">Contact</button>
-    <button class="nav-btn" data-icon="↗" data-cmd="cv"         onclick="runCmd('cv')">CV</button>
+    <button class="nav-btn" data-icon="⌨" data-cmd="skills"        onclick="runCmd('skills')">Skills</button>
+    <button class="nav-btn" data-icon="★" data-cmd="achievements" onclick="runCmd('achievements')">Achievements</button>
+    <button class="nav-btn" data-icon="✉" data-cmd="contact"       onclick="runCmd('contact')">Contact</button>
+    <button class="nav-btn" data-icon="↗" data-cmd="cv"            onclick="runCmd('cv')">CV</button>
   </nav>
 
   <div class="header-right">
@@ -747,7 +748,8 @@ function getIcon(icon){
     Gear: "fa-solid fa-gear",
     AI: "fa-solid fa-robot",
     Book: "fa-solid fa-book",
-    Web: "fa-solid fa-globe"
+    Web: "fa-solid fa-globe",
+    Integration: "fa-solid fa-plus"
   };
   return `<i class="${icons[icon] || 'fa-solid fa-bars'}"></i>`;
 }
@@ -785,7 +787,7 @@ async function loadData() {
     projects: projects.projects,
     skills:   skills.categories,
     contact:  contact.contact,
-    cv_url:   "https://your-cv-link.com/kalp-shah-cv.pdf",  // ← replace with your actual CV URL
+    cv_url:   "./Kalp_CV_Master.pdf",  // ← replace with your actual CV URL
     achievements: achievements.achievements
   };
 }
@@ -866,6 +868,15 @@ function renderSkills() {
   return `<div class="section-header">Tech::Skills</div>${cats}`;
 }
 
+function renderAchievements() {
+  const cards = DATA.achievements.map(a => `
+    <div class="exp-item">
+      <div class="exp-role"><span style="font-size: 14px; margin-right: 6px;">${getIcon(a.icon)}</span>${a.name}</div>
+      <div class="exp-desc">${a.description}</div>
+    </div>`).join('');
+  return `<div class="section-header">Awards::Achievements</div>${cards}`;
+}
+
 function renderContact() {
   const rows = DATA.contact.map(c => `
     <div class="contact-row">
@@ -881,15 +892,17 @@ const COMMANDS = {
   experience: renderExperience,
   projects:   renderProjects,
   skills:     renderSkills,
+  achievements: renderAchievements,
   contact:    renderContact,
   help: () => `
-    <span class="text-accent">about</span>      — Learn about my background<br/>
-    <span class="text-accent">experience</span> — View my formal roles and research<br/>
-    <span class="text-accent">projects</span>   — View my recent work<br/>
-    <span class="text-accent">skills</span>     — Browse my technical skills<br/>
-    <span class="text-accent">contact</span>    — Get my contact info and socials<br/>
-    <span class="text-accent">cv</span>         — Open my CV in a new tab<br/>
-    <span class="text-accent">clear</span>      — Clear the terminal screen`,
+    <span class="text-accent">about</span>         — Learn about my background<br/>
+    <span class="text-accent">experience</span>    — View my formal roles and research<br/>
+    <span class="text-accent">projects</span>      — View my recent work<br/>
+    <span class="text-accent">skills</span>        — Browse my technical skills<br/>
+    <span class="text-accent">achievements</span>  — View my achievements<br/>
+    <span class="text-accent">contact</span>       — Get my contact info and socials<br/>
+    <span class="text-accent">cv</span>            — Open my CV in a new tab<br/>
+    <span class="text-accent">clear</span>         — Clear the terminal screen`,
   cv: () => {
     window.open(DATA.cv_url, '_blank');
     return `<span class="text-dim">Opening CV in a new tab...</span> <span class="text-accent">✓</span>`;
