@@ -1,31 +1,31 @@
 {
   "projects": [
     {
-      "name": "CPU Ray Tracing Engine in C++",
-      "description": "A physics based ray tracing engine in C++ to simulate photorealistic rendered scenes",
+      "name": "Limit Orderbook and Trade Matching Engine",
+      "description": "Built a high-performance limit order book and trade matching engine in C++ with support for market, limit, fill-or-kill, and immediate-or-cancel orders.",
       "tech": ["C++"],
-      "repo": "https://github.com/kalpshah18/Ray-Tracer-CPP",
-      "status": "active"
+      "repo": "https://github.com/kalpshah18",
+      "status": "completed"
     },
     {
-      "name": "Landing Location Identification for Mars Rover using Classical Computer Vision",
-      "description": "Developed a computer vision pipeline to identify safe landing zones on Mars under computational constraints. Now used as a foundational algorithm at ISRO.",
+      "name": "Concurrent Asynchronous Logging System",
+      "description": "Implemented an asynchronous logging library in C++ that enabled concurrent thread-safe logging with a dedicated background writer and batched flushes.",
+      "tech": ["C++"],
+      "repo": "https://github.com/kalpshah18",
+      "status": "completed"
+    },
+    {
+      "name": "Realtime Carbon Credits Market Analysis Platform",
+      "description": "Architected a full-stack real-time analytics platform for live carbon credit pricing, trend signals, and risk analysis as part of Inter-IIT Tech Meet 14.0.",
+      "tech": ["Next.js", "WebSocket", "PostgreSQL", "Kafka", "Debezium", "LangChain", "DeepSeek"],
+      "repo": "https://github.com/kalpshah18",
+      "status": "completed"
+    },
+    {
+      "name": "Landing Location Detection Pipeline for Mars Rover using Classical Computer Vision",
+      "description": "Developed a computer vision pipeline to identify safe landing zones on Mars under compute constraints using classical image-processing techniques.",
       "tech": ["Python", "OpenCV"],
-      "repo": "https://github.com/kalpshah18/MarsSurfaceLandingDetectiong",
-      "status": "completed"
-    },
-    {
-      "name": "Real-time Carbon Credits Market Analysis using Agentic AI",
-      "description": "Engineered a full-stack platform using Next.js and WebSocket APIs to surface real-time carbon credit pricing, trends, and AI-generated investment signals to end users. Built at Inter-IIT Tech Meet 14.0 as Team 58",
-      "tech": ["Python", "SQL", "Langchain", "PostgreSQL", "Kafka", "Debezium", "RAG"],
-      "repo": "https://github.com/kalpshah18/InterIITTech_",
-      "status": "completed"
-    },
-    {
-      "name": "TermFolio",
-      "description": "This very website. A terminal-inspired developer portfolio with macOS-style UI, theme switching, and command-based navigation.",
-      "tech": ["HTML", "CSS", "JavaScript"],
-      "repo": "https://github.com/kalpshah18/termfolio",
+      "repo": "https://github.com/kalpshah18",
       "status": "completed"
     }
   ]

@@ -1,0 +1,58 @@
+Kalp Shah+91-6355258281
+Roll No.:24110152 kalp.shah@iitgn.ac.in
+B.Tech - Electrical Engineering kalp.shah18.work@gmail.com
+Minor in Computer Science and Engineering Github|Website
+Indian Institute Of Technology, Gandhinagar linkedin.com/in/kalpshah18
+Education
+Degree Institute CGPA/Percentage Year
+B.Tech. Indian Institute of Technology, Gandhinagar 8.67/10 (Current) 2024-2028
+Experience
+• AIResQ ClimSols May 2026 - Jul. 2026
+Machine Learning and Computer Vision Research InternGandhinagar, India
+–Engineered acustom Camera and Radar Devicefor collection and validation of flood depth data
+–ImplementedSingle View MetrologyCV algorithms to measure flood depth from CCTV cameras
+–TrainedYOLOv8Models to detect flood level markers painted on light poles withmAP@50 of 0.78
+–Extracted features like flood waterline usingsemantic segmentationwith DeepLabV3+
+• ABSix Robotics May. 2025 - Jul. 2025
+SWE Intern Gandhinagar, India
+–Engineered across-platform desktop application (Python, Qt)with real-time robot-student communication via the
+Dynamixel SDKdeployed across 15+ challenges and actively used by100+ students
+–Integrated aRAG pipeline (LangChain + ChromaDB)into the platform for students to query robotics concepts
+Projects
+• Limit Orderbook and Trade Matching Engine
+Personal Project Github
+–Built a high-performance Limit Order Book and trade matching engine inC++with support formultiple order
+typesincluding Market, Limit, Fill-or-Kill (FOK), and Immediate-or-Cancel (IOC) orders
+–Implemented low-latency price-time priority matching to support4000 Transactions per second
+–Optimized usingcache-friendlydata layouts,lock-free design, anddeterministic event ordering
+• Concurrent Asynchronous Logging System
+Personal Project Github
+–Implemented an asynchronous logging library usingC++enabling multiple threads to log concurrently
+–Developedadedicatedbackgroundwriterthreadwithathread-safequeueusingstd::mutex, std::condition_variable,
+and batched log flushing to reduce synchronization overhead
+–Benchmarked with128 concurrent threadsat1.7 million messages/secwith ordered, thread-safe output
+• Realtime Carbon Credits Market Analysis PlatformNov. 2025 - Dec. 2025
+Inter-IIT Tech Meet 14.0 - Pathway, High Preparation Problem StatementGithub
+–Architected a full-stack real-time analytics platform (Next.js, WebSocket, PostgreSQL) serving live carbon credit
+pricing, trend signals, and risk analysis to end users as part of an8-person team
+–Built a data streaming pipeline usingKafkaandDebezium(CDC) to capture livePostgreSQLchanges, cutting
+data freshness latency from60 minutes to under 3 seconds
+–Developed a multi-agentRAG system (LangChain, DeepSeek)with role-separated agents for retrieval, reasoning,
+and synthesis generating context-aware investment recommendations
+• Landing Location Detection Pipeline for Mars Rover using Classical Computer VisionJan. 2026 - Apr. 2026
+Prof. Shanmuganathan Raman, IITGnGithub | Research Poster
+–Developed a Computer Vision pipeline to identifysafe landing zones on MarswithISROunder compute constraints
+–Designed a modular system utilizing Sobel derivatives forslope detection, Fast Fourier Transforms fortexture
+analysis, and the Maximal Rectangle Algorithm forzone identification
+–Achieved a low computational power requirement solution with1.5 seconds runtimeon consumer-level hardware
+Achievements
+• Selected to Barclays Mentorship Programme India,Learned capital markets; built an FX hedging backtester2026
+• Expert on Codeforces,Handle:kalpshah1808,India Rank∼450out of 980002026
+• Integral Cup Round 1 Rank 47,among 2500+ participants, byOptiverandDa Vinci Trading2026
+• AMS Derive Round 1 Rank 150 and Round 2 Rank 17,among 2500+ participants, byJane StreetandQRT2026
+• JEE Advanced 2024 AIR 6637 JEE Mains 2024 AIR 3917,among 1.4 million candidates2024
+Skills
+• Languages:Python, C/C++, SQL, HTML/CSS, Javascript, Assembly, Verilog
+• ML/CV:PyTorch, OpenCV, scikit-learn, Langchain, Pandas, Numpy, Matplotlib
+• Backend/Tools:Node.js, WebSocket, PostgreSQL, Kafka, Debezium, Docker, REST APIs, Git, CMake
+• Frontend:React.js, Next.js, Tailwind CSS

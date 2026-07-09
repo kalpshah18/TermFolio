@@ -1,13 +1,18 @@
 {
   "achievements": [
     {
+      "name": "AMS Derive 2026",
+      "description": "Ranked 17th in 2nd Round and 150th in 1st Round of AMS Derive 2026 - A National Level Coding and Quant competition by Jane Street and QRT",
+      "icon": "LaptopCode"
+    },
+    {
       "name": "Integral Cup 2026",
-      "description": "An Integration Competition amongst IITs, IISc Bangalore and BITS. Ranked 47th amongst 2500+ Participants",
+      "description": "An Integration Competition amongst IITs, IISc Bangalore and BITS. Ranked 47th amongst 2500+ Participants. Competition Sponsored by Optiver and Da Vinci Trading",
       "icon": "Integration"
     },
     {
       "name": "Codeforces",
-      "description": "Reached Expert on Codeforces (Handle: kalpshah1808) - Max Rating 1785 - Top ~450 out of 98000 in India",
+      "description": "Reached Expert on Codeforces (Handle: kalpshah1808) - Max Rating 1743 - Top ~500 out of 98000 in India",
       "icon": "Codeforces"
     }
   ]
